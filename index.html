@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff5ba7">
+<title>💖 Gửi cậu, người tớ thích 💖</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700;800&family=Dancing+Script:wght@600;700&display=swap');
+
+*{box-sizing:border-box}
+:root{--pink:#ff4da6;--purple:#a855f7;--blue:#65d9ff}
+body{
+ margin:0;font-family:'Quicksand',sans-serif;color:white;
+ min-height:100vh;overflow-x:hidden;
+ background:linear-gradient(135deg,#ff80b5,#b388ff,#75d9ff,#ff9ecb);
+ background-size:400% 400%;animation:bg 12s ease infinite;
+}
+@keyframes bg{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+button{font-family:inherit;cursor:pointer;border:0}
+#sky{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.float{
+ position:absolute;bottom:-50px;animation:rise linear forwards;
+ filter:drop-shadow(0 0 8px #fff)
+}
+@keyframes rise{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+.spark{
+ position:fixed;width:5px;height:5px;border-radius:50%;
+ background:white;box-shadow:0 0 12px white;
+ animation:twinkle 2s infinite alternate;pointer-events:none
+}
+@keyframes twinkle{to{opacity:.15;transform:scale(.3)}}
+header{
+ position:fixed;top:0;left:0;right:0;z-index:10;
+ display:flex;justify-content:space-between;align-items:center;
+ padding:12px 15px;background:#ffffff22;backdrop-filter:blur(14px);
+ border-bottom:1px solid #ffffff50
+}
+.logo{font-weight:800;text-shadow:0 0 12px #ff168a}
+.music{
+ padding:10px 14px;border-radius:30px;color:white;
+ background:#ff3f9c;box-shadow:0 0 18px #ff54bb;
+ font-weight:800
+}
+main{position:relative;z-index:1}
+.page{
+ min-height:100svh;padding:90px 20px 35px;
+ display:none;align-items:center;justify-content:center;
+ flex-direction:column;text-align:center;
+ animation:appear .8s ease both
+}
+.page.active{display:flex}
+@keyframes appear{
+ from{opacity:0;transform:translateY(28px) scale(.97)}
+ to{opacity:1;transform:translateY(0) scale(1)}
+}
+.card{
+ width:min(100%,520px);padding:28px 22px;border-radius:32px;
+ background:#ffffff25;border:1px solid #ffffff9c;
+ box-shadow:0 15px 60px #70207030;backdrop-filter:blur(16px)
+}
+h1,h2{line-height:1.3;text-shadow:0 3px 18px #ff238a55}
+h1{font-size:clamp(30px,8vw,49px);margin:14px 0}
+h2{font-size:clamp(25px,6vw,36px)}
+.script{font-family:'Dancing Script',cursive}
+p{line-height:1.9;font-size:16px}
+.heart{
+ font-size:100px;display:inline-block;
+ filter:drop-shadow(0 0 15px #ff178f);
+ animation:heartbeat 1.2s infinite
+}
+@keyframes heartbeat{
+ 0%,100%{transform:scale(1)}
+ 15%{transform:scale(1.2)}
+ 30%{transform:scale(1)}
+ 45%{transform:scale(1.13)}
+}
+.btn{
+ color:#ff328e;background:white;padding:13px 22px;
+ border-radius:40px;font-weight:800;font-size:15px;
+ box-shadow:0 7px 20px #a6297040;
+ transition:.25s;margin:6px
+}
+.btn:hover{transform:translateY(-3px) scale(1.04)}
+.btn.primary{
+ color:white;background:linear-gradient(100deg,#ff369e,#9b5cff,#4bcbff);
+ background-size:200%;animation:shine 3s infinite
+}
+@keyframes shine{50%{background-position:100%}}
+.dots{display:flex;gap:7px;margin:16px}
+.dot{width:8px;height:8px;border-radius:50%;background:#ffffff80}
+.dot.on{width:23px;background:white}
+.bigtext{font-size:19px;font-weight:700}
+.loveletter{
+ padding:18px;border-radius:20px;background:#ffffff25;
+ margin:18px 0;border:1px dashed #ffffffb5
+}
+.choices{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
+#noBtn{transition:transform .2s}
+#finalHeart{font-size:65px;animation:heartbeat 1s infinite}
+footer{font-size:12px;opacity:.8;margin-top:20px}
+@media(max-width:380px){
+ .card{padding:23px 15px}.btn{padding:12px 17px}
+ p{font-size:15px}
+}
+</style>
+</head>
+<body>
+<div id="sky"></div>
+
+<header>
+ <div class="logo">💗 OUR LITTLE LOVE</div>
+ <button class="music" id="musicBtn" onclick="toggleMusic()">🎵 Bật nhạc</button>
+</header>
+
+<audio id="music" src="1000040297.mp4" loop preload="auto"></audio>
+
+<main>
+ <!-- PHẦN 1: MỞ ĐẦU -->
+ <section class="page active" id="p1">
+  <div class="card">
+   <div style="font-size:24px">🌷 ✨ 🌷</div>
+   <div class="heart">💖</div>
+   <p>Gửi đến một người đặc biệt...</p>
+   <h1 class="script">Cậu ơi, có điều này...</h1>
+   <p>Tớ đã giữ trong lòng khá lâu rồi.<br>
+   Hôm nay tớ muốn nói cho cậu biết! 💌</p>
+   <button class="btn primary" onclick="go(2)">Mở bức thư 💌</button>
+   <div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+  </div>
+ </section>
+
+ <!-- PHẦN 2: LỜI NHẮN -->
+ <section class="page" id="p2">
+  <div class="card">
+   <div style="font-size:48px">🌸 🦋 🌸</div>
+   <h2 class="script">Cậu có biết không?</h2>
+   <p class="bigtext">Trong hàng ngàn người ngoài kia...</p>
+   <div class="loveletter">
+    💕 Tớ lại vô tình để ý đến cậu.<br>
+    ✨ Một nụ cười của cậu cũng đủ làm ngày tớ vui hơn.<br>
+    🌷 Một tin nhắn của cậu cũng khiến tớ mong chờ.<br>
+    💗 Và chẳng biết từ lúc nào, cậu đã trở nên đặc biệt.
+   </div>
+   <p>Chắc cậu chưa biết điều đó đâu nhỉ? 🥹</p>
+   <button class="btn" onclick="go(1)">← Quay lại</button>
+   <button class="btn primary" onclick="go(3)">Tiếp tục nè 💖</button>
+   <div class="dots"><span class="dot"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
+  </div>
+ </section>
+
+ <!-- PHẦN 3: BÍ MẬT -->
+ <section class="page" id="p3">
+  <div class="card">
+   <div class="heart" style="font-size:75px">💘</div>
+   <h2 class="script">Bí mật nhỏ của tớ</h2>
+   <p>Tớ từng định nói với cậu nhiều lần rồi...</p>
+   <p>Nhưng cứ mỗi lần gặp cậu, tớ lại ngại,
+   chẳng biết phải bắt đầu từ đâu. 🙈</p>
+   <div class="loveletter">
+    <span class="script" style="font-size:29px">Nếu được chọn...</span>
+    <p>Tớ muốn trở thành người khiến cậu mỉm cười,
+    người lắng nghe cậu kể chuyện mỗi ngày,
+    và người ở bên cậu khi cậu cần. 🌈</p>
+   </div>
+   <button class="btn" onclick="go(2)">← Trở lại</button>
+   <button class="btn primary" onclick="go(4)">Điều quan trọng nhất 💌</button>
+   <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot on"></span><span class="dot"></span></div>
+  </div>
+ </section>
+
+ <!-- PHẦN 4: TỎ TÌNH -->
+ <section class="page" id="p4">
+  <div class="card">
+   <div style="font-size:45px">💐💗💐</div>
+   <p class="script" style="font-size:25px">Tớ muốn nói với cậu rằng...</p>
+   <h1 class="script" id="confession">TỚ THÍCH CẬU! 💖</h1>
+   <p>Cậu có đồng ý cho tớ một cơ hội<br>
+   để chúng mình tìm hiểu nhau không?</p>
+   <div class="choices">
+    <button class="btn primary" onclick="yes()">💗 Đồng ý nè!</button>
+    <button class="btn" id="noBtn" onclick="think()">🥺 Cho tớ suy nghĩ nhé</button>
+   </div>
+   <p id="answer" style="font-weight:800;min-height:28px"></p>
+   <button class="btn" onclick="go(3)">← Đọc lại</button>
+   <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot on"></span></div>
+  </div>
+ </section>
+
+ <!-- PHẦN 5: KẾT THÚC -->
+ <section class="page" id="p5">
+  <div class="card">
+   <div id="finalHeart">💞</div>
+   <h1 class="script" id="finalTitle">Cảm ơn cậu! 💖</h1>
+   <p id="finalText">Dù câu trả lời của cậu là gì, tớ vẫn vui vì đã can đảm nói ra.</p>
+   <div class="loveletter">
+    🌙 Mong cậu luôn vui vẻ.<br>
+    🌈 Mong mỗi ngày của cậu đều thật đẹp.<br>
+    💌 Và mong rằng chúng mình sẽ có thêm nhiều kỷ niệm.
+   </div>
+   <p class="script" style="font-size:29px">You are special to me! 💗</p>
+   <button class="btn primary" onclick="fireworks()">🎆 Bắn pháo hoa tình yêu</button>
+   <button class="btn" onclick="go(1)">↻ Xem lại từ đầu</button>
+   <footer>Made with 💖 just for you</footer>
+  </div>
+ </section>
+</main>
+
+<script>
+const pages=[...document.querySelectorAll('.page')];
+let current=1;
+
+function go(n){
+ current=n;
+ pages.forEach((p,i)=>p.classList.toggle('active',i===n-1));
+ window.scrollTo({top:0,behavior:'smooth'});
+ if(n===4) typeConfession();
+}
+
+function typeConfession(){
+ const el=document.getElementById('confession');
+ const words='TỚ THÍCH CẬU! 💖';
+ el.textContent='';
+ let i=0;
+ const timer=setInterval(()=>{
+  if(!document.getElementById('p4').classList.contains('active')){
+   clearInterval(timer);return;
+  }
+  el.textContent=words.slice(0,++i);
+  if(i>=words.length)clearInterval(timer);
+ },90);
+}
+
+// Nhạc: cần người dùng chạm nút để bắt đầu phát trên điện thoại
+const music=document.getElementById('music');
+const musicBtn=document.getElementById('musicBtn');
+async function toggleMusic(){
+ if(music.paused){
+  try{
+   await music.play();
+   musicBtn.textContent='🔊 Tắt nhạc';
+  }catch(e){
+   musicBtn.textContent='⚠️ Không phát được';
+   alert('Không phát được nhạc. Hãy kiểm tra file 1000040297.mp4 có nằm cùng thư mục với index.html không nhé!');
+  }
+ }else{
+  music.pause();
+  musicBtn.textContent='🎵 Bật nhạc';
+ }
+}
+music.addEventListener('ended',()=>musicBtn.textContent='🎵 Bật nhạc');
+
+// Nút suy nghĩ: tôn trọng lựa chọn của crush
+function think(){
+ document.getElementById('answer').textContent=
+ '💌 Không sao đâu, cậu cứ suy nghĩ nhé. Tớ tôn trọng cậu!';
+ document.getElementById('noBtn').textContent='💗 Tớ hiểu rồi';
+}
+
+// Khi crush đồng ý
+function yes(){
+ document.getElementById('finalTitle').textContent='Awww! Hạnh phúc quá! 💖';
+ document.getElementById('finalText').textContent=
+ 'Cảm ơn cậu đã cho tớ cơ hội. Mong chúng mình sẽ có thật nhiều kỷ niệm đẹp!';
+ go(5);
+ fireworks();
+}
+
+// Hiệu ứng trái tim, hoa và ngôi sao bay
+const sky=document.getElementById('sky');
+const symbols=['💗','💖','💕','🌸','✨','💘','🦋','🌷','⭐'];
+function floatOne(){
+ const e=document.createElement('span');
+ e.className='float';
+ e.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+ e.style.left=Math.random()*100+'%';
+ e.style.fontSize=(15+Math.random()*24)+'px';
+ const duration=5+Math.random()*7;
+ e.style.animationDuration=duration+'s';
+ sky.appendChild(e);
+ setTimeout(()=>e.remove(),duration*1000);
+}
+setInterval(floatOne,330);
+
+// Sao lấp lánh
+for(let i=0;i<35;i++){
+ const s=document.createElement('i');
+ s.className='spark';
+ s.style.left=Math.random()*100+'%';
+ s.style.top=Math.random()*100+'%';
+ s.style.animationDelay=Math.random()*3+'s';
+ document.body.appendChild(s);
+}
+
+// Pháo hoa trái tim
+function fireworks(){
+ for(let i=0;i<65;i++){
+  setTimeout(()=>{
+   const e=document.createElement('span');
+   e.textContent=['💖','✨','💗','🌟','💕'][Math.floor(Math.random()*5)];
+   e.style.cssText=`
+    position:fixed;z-index:30;left:${Math.random()*100}%;
+    top:${20+Math.random()*60}%;font-size:${18+Math.random()*25}px;
+    pointer-events:none;animation:burst 1.8s ease-out forwards`;
+   document.body.appendChild(e);
+   setTimeout(()=>e.remove(),1900);
+  },i*18);
+ }
+}
+const style=document.createElement('style');
+style.textContent='@keyframes burst{0%{opacity:1;transform:scale(.2) translateY(20px)}100%{opacity:0;transform:scale(1.7) translateY(-120px) rotate(35deg)}}';
+document.head.appendChild(style);
+</script>
+</body>
+</html>
